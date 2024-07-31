@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Klasifikasi Ubur-Ubur</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="menu-area">
+        <a href="#" class="logo">Deteksi Jenis Ubur-Ubur</a>
+        <ul class="nav">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#predict">Prediksi</a></li>
+        </ul>
+    </div>
+
+    <section id="home">
+        <div class="content">
+            <h1>Website Klasifikasi Ubur-Ubur</h1>
+            <p>Website ini dirancang untuk membantu Anda mengidentifikasi berbagai jenis ubur-ubur melalui teknologi machine learning. Dengan hanya mengunggah foto ubur-ubur, Anda akan mendapatkan mengenai jenis ubur-ubur tersebut. Jelajahi lebih lanjut</p>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="content">
+            <h1>About</h1>
+            <p>Aplikasi web Deteksi Jenis Ubur-ubur kami memanfaatkan teknologi machine learning terkini untuk mengidentifikasi secara akurat berbagai jenis ubur-ubur dari gambar yang diunggah. Dengan antarmuka yang ramah pengguna, cukup unggah foto, dan model jaringan neural kami yang canggih akan mengklasifikasikan spesies ubur-ubur</p>
+        </div>
+    </section>
+
+    <section id="predict" class="py-5">
+        <div class="container">
+            <h2 class="text-center">Unggah gambar untuk melakukan prediksi</h2>
+            <form action="/predict" method="post" enctype="multipart/form-data" class="text-center">
+                <div class="form-group">
+                    <input type="file" name="file" accept="image/*" class="form-control-file" required>
+                </div>
+                <input type="submit" value="Predict" class="btn btn-primary">
+            </form>
+            <div id="result" class="text-center mt-4">
+                {% if prediction %}
+                    <h2>Prediction: {{ prediction }}</h2>
+                    <img src="{{ url_for('display_image') }}" alt="Uploaded Image" class="img-fluid" width="300" height="200">
+                {% endif %}
+            </div>
+        </div>
+    </section>
+    <script>
+        document.getElementById('uploadForm').addEventListener('submit', function() {
+            this.reset();
+        });
+    </script>
+</body>
+</html>

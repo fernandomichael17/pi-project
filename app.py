@@ -6,7 +6,7 @@ from PIL import Image
 import io
 
 app = Flask(__name__)
-model = load_model('pi_model.h5')
+model = load_model('model/pi_model.h5')
 
 class_names = [
     'Moon jellyfish (Aurelia aurita)',
